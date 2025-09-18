@@ -1373,6 +1373,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // buka hasil di tab baru, bukan download
+    doc.output("dataurlnewwindow");
   }
 
   // 🔹 Event listener tombol Copy di header tabel
@@ -1398,3 +1399,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
