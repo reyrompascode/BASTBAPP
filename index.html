@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Kegiatan</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Formulir Input Kegiatan</h1>
+      <form id="kegiatanForm">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Nama Kegiatan
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="namaKegiatan"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>
+                Nomor BAST
+                <br />
+                <button type="button" class="copy-btn" data-target="nomorBAST">
+                  Copy
+                </button>
+              </th>
+              <th>
+                Nomor BAPP
+                <br />
+                <button type="button" class="copy-btn" data-target="nomorBAPP">
+                  Copy
+                </button>
+              </th>
+              <th>
+                Tanggal BAST/BAPP
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="tanggalBASTBAPP"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>
+                Nomor SK
+                <br />
+                <button type="button" class="copy-btn" data-target="nomorSK">
+                  Copy
+                </button>
+              </th>
+              <th>
+                Tanggal SK
+                <br />
+                <button type="button" class="copy-btn" data-target="tanggalSK">
+                  Copy
+                </button>
+              </th>
+              <th>
+                Nomor Surat Tugas
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="nomorSuratTugas"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>
+                Tanggal Surat Tugas
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="tanggalSuratTugas"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>
+                Pihak Pertama
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="pihakPertama"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>
+                Jabatan Pihak Pertama
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="jabatanPihakPertama"
+                >
+                  Copy
+                </button>
+              </th>
+              <th>Nama Mitra</th>
+              <th>
+                Jabatan Mitra
+                <br />
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-target="jabatanMitra"
+                >
+                  Copy
+                </button>
+              </th>
+
+              <th>Jumlah Dok</th>
+              <th>
+                Satuan Dok
+                <br />
+                <button type="button" class="copy-btn" data-target="satuanDok">
+                  Copy
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="inputRows"></tbody>
+        </table>
+
+        <div class="button-group">
+          <button type="button" id="addRow">Tambah Baris</button>
+          <button type="button" id="resetAll">Reset Semua</button>
+          <button type="button" id="exportAll">Ekspor Semua</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
