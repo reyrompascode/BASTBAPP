@@ -413,22 +413,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // 🔹 Validasi kesesuaian nomor dengan bulan/tahun
-    function checkNomorDenganTanggal(nomor, tanggal, label) {
-      if (!nomor || !tanggal) return true; // jika salah satu kosong, lewati
+   // 🔹 Validasi kesesuaian nomor dengan tahun
+function checkNomorDenganTanggal(nomor, tanggal, label) {
+  if (!nomor || !tanggal) return true; // jika salah satu kosong, lewati
 
-      const d = new Date(tanggal);
-      const bulan = String(d.getMonth() + 1).padStart(2, "0");
-      const tahun = d.getFullYear();
-      const target = `${bulan}/${tahun}`; // contoh "09/2025"
-      const last7 = nomor.slice(-7); // ambil 7 char terakhir
+  const d = new Date(tanggal);
+  const tahun = String(d.getFullYear()); // contoh "2025"
+  const last4 = nomor.slice(-4); // ambil 4 char terakhir
 
-      if (last7 !== target) {
-        alert(`Nomor ${label} harus diakhiri dengan ${target}`);
-        return false;
-      }
-      return true;
-    }
+  if (last4 !== tahun) {
+    alert(`Nomor ${label} harus diakhiri dengan tahun ${tahun}`);
+    return false;
+  }
+  return true;
+}
+
 
     // 🔹 Validasi weekend (tanggal tidak boleh Sabtu/Minggu)
     function isWeekend(dateStr, label) {
@@ -445,6 +444,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isWeekend(data.tanggalBASTBAPP, "Tanggal BAST/BAPP")) return;
     if (isWeekend(data.tanggalSK, "Tanggal SK")) return;
     if (isWeekend(data.tanggalSuratTugas, "Tanggal Surat Tugas")) return;
+
+    // 🔹 Validasi sebelum ekspor
+if (!checkNomorDenganTanggal(data.nomorSuratTugas, data.tanggalSuratTugas, "Surat Tugas")) return;
+if (!checkNomorDenganTanggal(data.nomorSK, data.tanggalSK, "SK")) return;
+if (!checkNomorDenganTanggal(data.nomorBAST, data.tanggalBASTBAPP, "BAST")) return;
+if (!checkNomorDenganTanggal(data.nomorBAPP, data.tanggalBASTBAPP, "BAPP")) return;
+
+// lanjutkan ke proses export PDF ...
+
 
     const doc = new jspdf.jsPDF();
     doc.setFont("times", "normal");
@@ -1006,22 +1014,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // 🔹 Validasi kesesuaian nomor dengan bulan/tahun
-      function checkNomorDenganTanggal(nomor, tanggal, label) {
-        if (!nomor || !tanggal) return true; // jika salah satu kosong, lewati
+     // 🔹 Validasi kesesuaian nomor dengan tahun
+function checkNomorDenganTanggal(nomor, tanggal, label) {
+  if (!nomor || !tanggal) return true; // jika salah satu kosong, lewati
 
-        const d = new Date(tanggal);
-        const bulan = String(d.getMonth() + 1).padStart(2, "0");
-        const tahun = d.getFullYear();
-        const target = `${bulan}/${tahun}`; // contoh "09/2025"
-        const last7 = nomor.slice(-7); // ambil 7 char terakhir
+  const d = new Date(tanggal);
+  const tahun = String(d.getFullYear()); // contoh "2025"
+  const last4 = nomor.slice(-4); // ambil 4 char terakhir
 
-        if (last7 !== target) {
-          alert(`Nomor ${label} harus diakhiri dengan ${target}`);
-          return false;
-        }
-        return true;
-      }
+  if (last4 !== tahun) {
+    alert(`Nomor ${label} harus diakhiri dengan tahun ${tahun}`);
+    return false;
+  }
+  return true;
+}
+      // 🔹 Validasi sebelum ekspor
+if (!checkNomorDenganTanggal(data.nomorSuratTugas, data.tanggalSuratTugas, "Surat Tugas")) return;
+if (!checkNomorDenganTanggal(data.nomorSK, data.tanggalSK, "SK")) return;
+if (!checkNomorDenganTanggal(data.nomorBAST, data.tanggalBASTBAPP, "BAST")) return;
+if (!checkNomorDenganTanggal(data.nomorBAPP, data.tanggalBASTBAPP, "BAPP")) return;
+
+// lanjutkan ke proses export PDF ...
+
+
 
       // --- halaman BAST ---
       if (!firstPage) doc.addPage();
@@ -1399,4 +1414,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
 
